@@ -38,7 +38,7 @@ That’s enough for me to practice verbs and nouns without losing track.
    git clone https://github.com/<your-username>/lexibase.git
    cd lexibase
    npm install
-````
+   ```
 
 2. **Set up `.env`**
 
