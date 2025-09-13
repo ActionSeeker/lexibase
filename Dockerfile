@@ -1,26 +1,16 @@
-FROM node:14 AS builder
-
-# Create app directory
+# Dockerfile.dev
+FROM node:20
 WORKDIR /app
 
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
 COPY package*.json ./
+COPY tsconfig*.json ./
+COPY nest-cli.json ./
 COPY prisma ./prisma/
 
-# Install app dependencies
-RUN npm install
+RUN npm ci
+RUN npx prisma generate --schema=./prisma/schema.prisma
 
-COPY . .
-
-RUN sleep 3
-
-RUN npm run build
-
-FROM node:14
-
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package*.json ./
-COPY --from=builder /app/dist ./dist
+COPY src ./src
 
 EXPOSE 3000
-CMD ["npm", "run", "start:prod" ]
+CMD ["npm","run","dev"]

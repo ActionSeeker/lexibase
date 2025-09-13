@@ -3,6 +3,21 @@
   "collection": "@nestjs/schematics",
   "sourceRoot": "src",
   "compilerOptions": {
-    "deleteOutDir": true
+    "deleteOutDir": true,
+    "plugins": [
+      "@nestjs/swagger/plugin"
+    ]
+  },
+  "watchOptions": {
+    "paths": [
+      "src"
+    ],
+    "ignored": [
+      "dist/**",
+      "node_modules/**",
+      "prisma/**",
+      ".env",
+      "**/*.spec.ts"
+    ]
   }
 }
