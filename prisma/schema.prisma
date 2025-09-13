@@ -13,3 +13,20 @@ model User {
   name      String?
   password  String?
 }
+
+model Language {
+  id     Int     @id @default(autoincrement())
+  code   String  @unique
+  name   String
+  lemmas Lemma[]
+}
+
+model Lemma {
+  id         Int      @id @default(autoincrement())
+  languageId Int
+  lemma      String
+  partOfSpeech String
+  language   Language @relation(fields: [languageId], references: [id], onDelete: Cascade)
+
+  @@index([languageId, partOfSpeech])
+}
