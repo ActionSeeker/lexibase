@@ -6,8 +6,6 @@ I kept the first version very simple: just **languages**, **lemmas** (base words
 
 That’s it. No translations, no examples yet. Just the bare minimum to start storing and playing with words.
 
----
-
 ## ✨ What it does (right now)
 - **Languages** → add Tamil (`ta`), Farsi (`fa`), or whatever I’m learning
 - **Lemmas** → add the root word  
@@ -20,7 +18,7 @@ That’s it. No translations, no examples yet. Just the bare minimum to start st
 
 That’s enough for me to practice verbs and nouns without losing track.
 
----
+
 
 ## 🛠️ Stack
 - **NestJS** - backend
@@ -28,8 +26,6 @@ That’s enough for me to practice verbs and nouns without losing track.
 - **Postgres** - database
 - **Docker** - local dev
 - **Swagger** - quick API docs
-
----
 
 ## 🚀 How to run
 
@@ -61,8 +57,6 @@ That’s enough for me to practice verbs and nouns without losing track.
 5. **Play with the API**
    Visit → [http://localhost:3000/api](http://localhost:3000/api) for Swagger UI.
 
----
-
 ## 📖 Endpoints (MVP)
 
 * **Languages**
@@ -81,15 +75,11 @@ That’s enough for me to practice verbs and nouns without losing track.
 
   * `POST /forms` → add a form to a lemma
 
----
-
 ## 🗺️ Roadmap
 
 * Phase 1 → Languages, Lemmas, Forms ✅
 * Phase 2 → Translations, Senses, Examples
 * Phase 3 → Users, collections, search
-
----
 
 ## 📄 License
 
