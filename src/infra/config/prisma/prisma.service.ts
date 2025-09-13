@@ -1,4 +1,5 @@
 import {
+  Global,
   INestApplication,
   Injectable,
   OnModuleDestroy,
@@ -6,11 +7,11 @@ import {
 } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
 
+@Global()
 @Injectable()
 export class PrismaService
   extends PrismaClient
-  implements OnModuleInit, OnModuleDestroy
-{
+  implements OnModuleInit, OnModuleDestroy {
   constructor() {
     super();
   }

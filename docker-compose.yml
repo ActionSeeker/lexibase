@@ -1,45 +1,29 @@
 services:
-  nest-api:
-    container_name: nest-api
+  lexibase:
     build:
       context: .
-      dockerfile: Dockerfile # <- use your dev Dockerfile
-    working_dir: /app # <- consistent working dir
-    command: npm run dev # nest --watch + prisma --watch
-    ports:
-      - "3000:3000"
+      dockerfile: Dockerfile
+    container_name: lexibase
+    working_dir: /app
+    command: sh -lc "npx prisma migrate deploy && npm run dev"
+    ports: [ "3000:3000" ]
     environment:
       - NODE_ENV=development
     volumes:
-      - .:/app:cached # mount WHOLE project at /app
-      - /app/node_modules # keep container's node_modules
+      - .:/app:cached
+      - /app/node_modules
     depends_on:
       - postgres
-    env_file:
-      - .env
 
   postgres:
     image: postgres:13
     container_name: postgresprisma
     restart: always
-    ports:
-      - "5432:5432"
+    ports: [ "5432:5432" ]
     env_file:
       - .env
     volumes:
       - postgres:/var/lib/postgresql/data
-
-  pgadmin:
-    image: dpage/pgadmin4
-    container_name: pgadmin
-    restart: always
-    ports:
-      - "8080:80"
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: secret
-    depends_on:
-      - postgres
 
 volumes:
   postgres:
